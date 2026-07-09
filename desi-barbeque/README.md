@@ -1,16 +1,85 @@
-# React + Vite
+# Desi Barbeque (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A single-page, modern website for **Desi Barbeque** with menu browsing, gallery, party-order info, and a WhatsApp-based ordering flow.
 
-Currently, two official plugins are available:
+## Features
+- **Multi-page sections** (single-page app routing via internal state):
+  - Home
+  - Menu (with tabs: *Mains & wings*, *Chicken tikka skewers*, *Veg tikka*)
+  - Gallery
+  - About
+  - Party orders
+  - Contact
+- **WhatsApp ordering / callback flow**
+  - “Order on WhatsApp” buttons open WhatsApp with a pre-filled message.
+  - Contact form opens WhatsApp in a new tab/window with the submitted details.
+- **Menu download link**
+  - “Download full menu (PDF)” links to **`/menu.pdf`**.
+- **Mobile floating CTA**
+  - Bottom bar with **Call** and **WhatsApp** actions on small screens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- React (via Vite)
+- Tailwind CSS (configured through `@tailwindcss/vite`)
+- lucide-react (icons)
+- oxlint (linting)
 
-## React Compiler
+## Getting Started
+### Prerequisites
+- Node.js (LTS recommended)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Install
+```bash
+npm install
+```
 
-## Expanding the Oxlint configuration
+### Run in development
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Build for production
+```bash
+npm run build
+```
+
+### Preview production build
+```bash
+npm run preview
+```
+
+### Lint
+```bash
+npm run lint
+```
+
+## Project Structure
+- `src/App.jsx` — main UI + all sections/pages + WhatsApp and menu interactions
+- `src/main.jsx` — React entry
+- `src/index.css` — global styles
+- `public/` — static assets served at the site root (e.g., `menu.pdf` should be placed here)
+- `src/assets/gallery/` — gallery images used on the Gallery page
+
+## Adding/Updating Assets
+### Gallery photos
+Gallery images are imported in `src/App.jsx` from:
+- `src/assets/gallery/tikka-skewers-row.jpg`
+- `src/assets/gallery/tandoori-on-coals.jpg`
+- `src/assets/gallery/tikka-flavours-grill.jpg`
+- `src/assets/gallery/tandoori-plate.jpg`
+
+To add new gallery images, place them in `src/assets/gallery/` and update the `GALLERY_ITEMS` list in `src/App.jsx`.
+
+### Full menu PDF
+The app expects a file at:
+- `public/menu.pdf`
+
+Place your PDF there so the “Download full menu (PDF)” link works.
+
+## Configuration Notes
+- WhatsApp number is hardcoded in `src/App.jsx` as `WHATSAPP_NUMBER`.
+- If you need multiple branches/phones, adjust the constants and links in `src/App.jsx`.
+
+## License
+See `LICENSE` in the project root.
+
